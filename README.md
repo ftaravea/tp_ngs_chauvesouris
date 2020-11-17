@@ -17,3 +17,5 @@ readme du projet ngs
 #Réflexion sur le séquençage (single end vs paired end, contrôle des séquences avec fastqc, trinity)
 
 #utilisation de fastqc via le script boucle_fastqc.sh. Les données obtenues seront stockées en dehors du git dans /data_download/output_fastqc
+
+#Uitlisation de trimmomatic pour corriger les séquences selon les defauts observes via fastqc. pour cela on utilise le script boucle_trimmomatic. Les données obtenues seront stockées en dehors du git dans /data_download/output_trimmomatic
