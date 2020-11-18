@@ -17,7 +17,7 @@ cd $output_fastqc
 
 # Recuperer les donnees
 home_fastq="/home/rstudio/data/mydatalocal/data_download/sharegate-igfl.ens-lyon.fr/Projet_31_20_UE_NGS_2020/FASTQ"
-fastq=${home_fastq}/".*gz"
+fastq=${home_fastq}/"*.gz"
 
 
 

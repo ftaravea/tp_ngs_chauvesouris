@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# un script qui permet de netoyer les sequences grace a Trimmomatic
+# un script qui permet de nettoyer les sequences grace a Trimmomatic
 
 
 # dossier par defaut pour les donnees
