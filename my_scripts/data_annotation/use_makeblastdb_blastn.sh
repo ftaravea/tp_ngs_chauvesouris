@@ -21,7 +21,7 @@ querydir=$data_download/"all_aln"
 query=$querydir/$gene".fas"
 
 if [ -e $query ] ; then
-  echo $query" exists"    #confirmer que le gene existe
+  echo "$query exists"    #confirmer que le gene existe
   
   #creer notre blast data base
   assemblage=$data_download/"output_transcoder/Trinity.fasta.transdecoder.cds"
