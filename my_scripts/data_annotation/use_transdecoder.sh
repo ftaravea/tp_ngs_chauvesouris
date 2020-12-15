@@ -17,5 +17,5 @@ cd $output_transcoder
 read=$data_download/"output_trinity"
 
 TransDecoder.LongOrfs -t $read/"Trinity_RF.fasta" --gene_trans_map $read/"Trinity_RF.fasta.gene_trans_map" -m 100 -S -O $output_transcoder
-TransDecoder.Predict -t $read/"Trinity_RF.fasta" -single_best_only --cpu 16 -O $output_transcoder
+TransDecoder.Predict -t $read/"Trinity_RF.fasta" --single_best_only --cpu 16 -O $output_transcoder
 
