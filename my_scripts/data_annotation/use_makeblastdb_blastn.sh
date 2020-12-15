@@ -24,7 +24,7 @@ if [ -e $query ] ; then
   echo "$query exists"    #confirmer que le gene existe
   
   #creer notre blast data base
-  assemblage=$data_download/"output_transcoder/Trinity.fasta.transdecoder.cds"
+  assemblage=$data_download/"output_transcoder/Trinity_RF.fasta.transdecoder.cds"
   blast_db_dir=$data_download/"output_blast_database"
   blast_db=$blast_db_dir/"Myotis_velifer_cds.db"
   db=$blast_db.nhr
