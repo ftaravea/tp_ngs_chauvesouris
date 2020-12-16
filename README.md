@@ -68,8 +68,9 @@ Discussion avec un membre de l'équipe du CIRI.
 
 
 Discussion sur les fichiers de sortie de Trinity
-Le premier fichier est un fichier .fasta, il contient les séquences sous la forme /n
->Nom_de_la_séquence /n
+Le premier fichier est un fichier .fasta, il contient les séquences sous la forme
+
+>Nom_de_la_séquence
 Séquence GAGAGCTTT etc...
 
 Les éléments 2,3 et 4 du nom de séquence correspondent au nom du gène
@@ -88,4 +89,39 @@ Ici le fichier nous donne plus de 300 000 gènes différents (contre 30 000 envi
 
 
 Premières recherches sur Transcoder, les fichiers cds d'intérêt et la manière de construire une banque blast, en prévision de la session de décembre !
+
+
+
+# Jour4:
+
+
+Présentation des différents projets
+
+Utilisation de TransDecoder sur le fichier de sortie de Trinity via le script use_transdecoder.sh
+Transdecoder va identifier les régions codantes codantes probables dans les transcrits.
+Les données obtenues seront stockées en dehors du git dans /data_download/annotation/output_transcoder
+
+
+
+Suite à cela, nous allons construire une blast data bank à partir de nos séquences et blaster les cds humains contre cette banque.
+
+Nous choisissons d'utiliser les cds humains car ceux-ci sont mieux annotés que ceux de Myotys lucifugus (une espèce proche de l'espèce cible que nous aurions pu utiliser)
+
+Pour le blast, nous utilisons le script use_makeblastdb_blastn qui permet de construire la database via makeblastdb et de blaster nos séquences d'intêtet contre cette data base via blastn.
+
+
+
+
+# Jour5:
+
+
+Maintenant que nous avons un programme qui permet de blaster nos séquences, on obtient un certain nombre d'alignement corrects avec des tailles de séquences très diverses.
+
+On va écrire un script pour ne garder que les séquences pour lesquelles on a alignement que correspond au moins à la moitié de la taille de la séquence, parse_blastn_output
+
+
+
+Création d'un petit script pour installer Phyml, PRANK et Trimal. Voir instal_programs.sh
+
+
 

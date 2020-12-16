@@ -18,19 +18,21 @@ gene=$1
 querydir=$data_download/"all_aln"
 query=$querydir/$gene".fas"
 
-
 ########################################################
 ### PARSE BLAST OUTPUT
 
 ## Estimation grossiere de la longueur des genes d interet
-nombre_char=cat $query | wc -c
-nombre_seq=cat $query | grep ">" -c
-lenght_seq=echo "($nombre_char/$nombre_seq)" | bc
+nombre_char=$(cat $query | wc -c)
+nombre_seq=$(cat $query | grep ">" -c)
+lenght_seq=$(echo "($nombre_char/$nombre_seq)" | bc)
+
+echo head $query
+echo $nombre_char
 
 echo "estimation of query length=" $lenght_seq
 
 echo "selection of lines in BLAST output corresponding to alignement at least 50% of query length"
-target=echo $lenght_seq/2 | bc
+target=$(echo $lenght_seq/2 | bc)
 echo "That it" $target "bp"
 
 output_blast="/home/rstudio/data/mydatalocal/data_download/annotation/output_blastn"
@@ -39,7 +41,7 @@ blast=$output_blast/$gene".blast"
 #cat $blast | awk '{if($4>$target) {print $2 " " $4}}'
 
 ###
-homologs= cat $blast | awk '{if($4>'$target') {print $2}}' | sort | uniq
+homologs=$(cat $blast | awk '{if($4>'$target') {print $2}}' | sort | uniq)
 echo "Sequences a recuperer:"
 echo $homologs
 
@@ -53,13 +55,15 @@ fi;
 blast_db_dir=$data_download/"output_blast_database"
 blast_db=$blast_db_dir/"Myotis_velifer_cds.db"
 
+
 for seq in $homologs
   do
+  echo $seq
   /softwares/ncbi-blast-2.10.1+/bin/blastdbcmd -entry $seq -db $blast_db -out tmp.fasta
   cat tmp.fasta >> $file_homologs
 done
 
-cat $query $file_homologs > $output_blastn_parsed/$gene"_+Myovelsup${target}.fasta"
+cat $query $file_homologs > $output_blastn_parsed/"final_output"/$gene"_+Myovelsup${target}.fasta"
 
 
 
