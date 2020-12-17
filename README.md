@@ -2,12 +2,38 @@
 
 readme du projet ngs
 
+Notice : Ce document présente de manière chronologique les avancées du groupe bats 1 au cours des deux semaines de TP NGS.
+Les scripts seront décrits brièvements, se réferer aux annotations directement dans le corps des script pour plus de détail.
+> Des encarts sur les différentes fonctions de bash seront réalisés.
+
 
 # Journal de bord
 
 # Jour1:
 
+Présentation des différents groupes de TP.
+
 Généralités concernant bash (cf recap papier jour1), prise en main.
+>Quelques fonctions bash utiles :
+#!/bin/bash : permière ligne nécessaire lors de l'écriture d'un script
+mkdir : créer un dossier
+rm : supprimer un fichier
+mv : déplacer un fichier
+cat : affichier le contenu d'un fichier
+pwd : afficher le chemin actuel
+cd chemin : choisir le dossier actif
+chmod u+x nom_du_script : permet de donner les droits d'exécution du script à l'utilisateur.
+Dans le terminal, ./nom_du_script permet de lancer un script
+$variable : appeler une variable définie précedemment
+git reset --soft --hard ou --mixed : revenir à un commit précédent (vérifier la documentation avant usage)
+
+
+
+
+PROJET CHAUVE-SOURIS
+
+*Etude de la réponse interferon chez les chauves-souris.*
+
 
 téléchargement des données via la commande: wget -r --ftp-user=igfl-UE_NGS_2020 --ftp-password=XXX ftp://sharegate-igfl.ens-lyon.fr/Projet_31_20_UE_NGS_2020/
 
@@ -122,6 +148,13 @@ On va écrire un script pour ne garder que les séquences pour lesquelles on a a
 
 
 Création d'un petit script pour installer Phyml, PRANK et Trimal. Voir instal_programs.sh
+
+
+
+
+# Jour6:
+
+Utilisation de trimal et de phyml
 
 
 

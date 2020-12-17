@@ -71,3 +71,6 @@ if [ -e $fasta_dir ] ; then
   
 fi ;
 
+
+  phyml -i $alignement -d nt -m HKY85 -a e -c 4 -s NNI -b -1 --leave_duplicat
+
