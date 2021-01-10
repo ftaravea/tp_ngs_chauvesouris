@@ -28,7 +28,7 @@ right_trimmomatic=$(ls ${home_trimmomatic}/*R2_001_paired.fq.gz |paste -d "," -s
 Trinity --seqType fq --left $left_trimmomatic --right $right_trimmomatic --max_memory 14G --CPU 4 --SS_lib_type RF --output $output_trinity
 
 #explication des parametres trinity:
-# seqType fastq (ou fasta)
+# seqType fastq ici (ou fasta)
 # left ensemble des sequences forward et right, ensemble des sequences reverse
 # max_memory et CPU memoire et coeur aloues au programme (notre machine virtuelle est une 16G 4CPU)
 # SS_lib_type type de paired end read method   ici FR (ce qui se traduit en RF pour trinity)     information disponible ici https://www.lexogen.com/sense-mrna-sequencing/ FAQ1.9 dans notre cas

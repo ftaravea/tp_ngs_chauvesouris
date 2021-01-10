@@ -34,18 +34,18 @@ Lib6_31_20_S6"
 
 for sample in $nom_des_fastq
 do
-  fastq_R1=${home_fastq}/${sample}_R1_001.fastq.gz
-  fastq_R2=${home_fastq}/${sample}_R2_001.fastq.gz
+  fastq_R1=${home_fastq}/${sample}_R1_001.fastq.gz       #fichier contenant les reads forward
+  fastq_R2=${home_fastq}/${sample}_R2_001.fastq.gz       #fichier contenant les reads reverse
   echo $fichier   #on affiche le nom du fastq pour lequel l'analyse est en cours
   java -jar /softwares/Trimmomatic-0.39/trimmomatic-0.39.jar PE $fastq_R1 $fastq_R2 ${sample}_R1_001_paired.fq.gz ${sample}_R1_001_unpaired.fq.gz ${sample}_R2_001_paired.fq.gz ${sample}_R2_001_unpaired.fq.gz ILLUMINACLIP:${data_download}/adapt.fasta:2:30:10 HEADCROP:9 TRAILING:28 MINLEN:100
 done
 
-# Voici le détail des parametres trimmomatic:
+# Voici le detail des parametres trimmomatic:
 # PE: paired end
 # 2 entrees, les sequences forward (R1) et reverse (R2) ; 4 sorties R1 et R2 a chaque fois avec les sequences paired et unpaired
-# ILLUMINACLIP fichier contenant les adapter et parametres concernant la comparaison aux adapteurs
-# HEADCROP:9 couper les 9 premieres bases ; TRAILING:28 verifier que les bases de la fin soient d'une qualité superieure a 28 
-# MINLEN:100 ne pas concerver les read plus petits que 100pb
+# ILLUMINACLIP fichier contenant la sequence de l adapter et les parametres pour l alignement a l adapter
+# HEADCROP:9 couper les 9 premieres bases ; TRAILING:28 verifier que les bases de la fin soient d'une qualite superieure a 28 
+# MINLEN:100 ne pas conserver les reads plus petits que 100pb
 
 
 
