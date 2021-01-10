@@ -50,6 +50,8 @@ if [ -e $fasta_dir ] ; then
   #on vérifie que notre fichier de séquence existe bien
   
   
+  #Dans ce programme, les lignes de code correspondant a trimal et prank ont ete commentees de façon a ce que seul phyml soit lance. Ces lignes ont ete conservees par choix, de facon a pouvoir rapidement produire un script qui utilise prank, trimal et phyml en une seule fois.
+  
   #prank -gapext=0.5 -gaprate=0.005 -d=$fasta_dir -o=$output_prank_file
   #prank -gapext=0.5 -gaprate=0.005 -d=$fasta_dir +F -o=$output_prank_f_file
 
@@ -63,14 +65,22 @@ if [ -e $fasta_dir ] ; then
   #phyml
   phyml -i $output_trimal_file -d nt -m HKY85 -a e -c 4 -s NNI -b -1 --leave_duplicat
   phyml -i $output_trimal_f_file -d nt -m HKY85 -a e -c 4 -s NNI -b -1 --leave_duplicat
+  #-i : Sequences au format phylip, -d : Nucleotides, -m : Choix du modèle de substitution
+  #-a : Estimation du maximum de vraisemblance, -s : Modèle pour la construction de l’arbre : nearest-neighbor interchange (NNI).
+  #-b :  Test statistique utilisé pour les branches : approximate likelihood-ratio test (aLRT), --leave_duplicat : Conserver les séquences dupliquées
+  
   
   mv $output_trimal_file"_phyml_stats.txt" $output_phyml
   mv $output_trimal_f_file"_phyml_stats.txt" $output_phyml
   mv $output_trimal_file"_phyml_tree.txt" $output_phyml
   mv $output_trimal_f_file"_phyml_tree.txt" $output_phyml
+  #deplacer les fichiers de sortie PhyML dans le bon dossier
   
 fi ;
 
 
-  phyml -i $alignement -d nt -m HKY85 -a e -c 4 -s NNI -b -1 --leave_duplicat
+# FIN
+
+
+#  phyml -i $alignement -d nt -m HKY85 -a e -c 4 -s NNI -b -1 --leave_duplicat
 

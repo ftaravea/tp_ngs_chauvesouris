@@ -29,6 +29,7 @@ tar xzf prank.linux64.170427.tgz
 export PATH=$PATH:/home/rstudio/data/mydatalocal/my_program/prank/bin/
 
 
+
 ###phyML
 
 git clone https://github.com/stephaneguindon/phyml.git
@@ -45,7 +46,7 @@ export PATH=$PATH:/home/rstudio/data/mydatalocal/my_program/phyml/src/
 
 
 
-
+# FIN
 
 
 

@@ -19,3 +19,10 @@ read=$data_download/"output_trinity"
 TransDecoder.LongOrfs -t $read/"Trinity_RF.fasta" --gene_trans_map $read/"Trinity_RF.fasta.gene_trans_map" -m 100 -S -O $output_transcoder
 TransDecoder.Predict -t $read/"Trinity_RF.fasta" --single_best_only --cpu 16 -O $output_transcoder
 
+# TransDecoder.LongOrfs permet d extraire les long open reading frames (ORF)
+# TransDecoder.Predict permet d estimer la probabilite que les ORF obtenues soient bien des regions codantes
+# -t et --gene_trans_map fichiers de sortie de trinity (entree de transdecoder) -m taille minimale souhaitee pour les ORF (ici 100pb) -S car nos donnees sont Strand-specific  -O chemin de sortie pour trandecoder
+# -single_best_only permet de ne garder que le meilleur ORF pour chaque transcrit
+
+#FIN
+

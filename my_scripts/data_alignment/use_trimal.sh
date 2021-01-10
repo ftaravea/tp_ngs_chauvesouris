@@ -21,6 +21,8 @@ output_trimal="/home/rstudio/data/mydatalocal/data_download/alignment_phylogeny/
 mkdir -p $output_trimal
 cd $output_trimal
 
+#Dans ce programme, les lignes de code correspondant a prank et phyml ont ete commentees de façon a ce que seul trimal soit lance. Ces lignes ont ete conservees par choix, de facon a pouvoir rapidement produire un script qui utilise prank, trimal et phyml en une seule fois.
+
 # creer un dossier specifique pour les fichiers de sortie du script
 #output_phyml="/home/rstudio/data/mydatalocal/data_download/alignment_phylogeny/output_phyml"
 #mkdir -p $output_phyml
@@ -53,6 +55,7 @@ if [ -e $fasta_dir ] ; then
   #Trimal
   trimal -in $output_prank_file".best.fas" -out $output_trimal_file -phylip
   trimal -in $output_prank_f_file".best.fas" -out $output_trimal_f_file -phylip
+  #convertir le format des fichiers d'alignement au format phylip
   
   
   #phyml
@@ -61,4 +64,7 @@ if [ -e $fasta_dir ] ; then
   
   
 fi ;
+
+
+# FIN
 

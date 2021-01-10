@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# un script pour creer notre banque blast avec makeblastdb a partir des sorties de Trinity puis pour blaster des sequences contre cette banque avec blastn
+# un script pour creer notre banque blast avec makeblastdb a partir des sorties de Transdecoder puis pour blaster des sequences contre cette banque avec blastn
 # on va utiliser les séquences du dossier all_aln
 
 echo "utilisation: ./use_makeblastdb_blastn.sh gene_name"
-# On donne nos instructions a l utilisateur. Ce script prend une variable d entree (gene_name)
+# On donne nos instructions a l utilisateur. Ce script prend une variable d entree (gene_name) qui est le nom du gene pour lequel nous souhaitons trouver les homologues
 
 # dossier par defaut pour les donnees
 data_download="/home/rstudio/data/mydatalocal/data_download/annotation"
@@ -26,8 +26,8 @@ if [ -e $query ] ; then
   echo "$query exists"    #confirmer que le fichier contenant les sequences pour le gene existe bien
   
   #creer notre blast data base
-  assemblage=$data_download/"output_transcoder/Trinity_RF.fasta.transdecoder.cds"  #sortie trinity qui sert a creer notre data base
-  blast_db_dir=$data_download/"output_blast_database"
+  assemblage=$data_download/"output_transcoder/Trinity_RF.fasta.transdecoder.cds"  #sortie trinity apres Transdecoder qui sert a creer notre data base
+  blast_db_dir=$data_download/"output_blast_database"  #chemin pour enregistrer notre data base
   blast_db=$blast_db_dir/"Myotis_velifer_cds.db"
   db=$blast_db.nhr    # Une ligne pour pouvoir verifier plus tard si la banque existe bien
   
@@ -38,7 +38,7 @@ if [ -e $query ] ; then
   else
   echo "$db is empty."
   /softwares/ncbi-blast-2.10.1+/bin/makeblastdb -in $assemblage -dbtype nucl -parse_seqids -out $blast_db
-  # on cree la banque.
+  # on cree la banque si elle n'existe pas deja.
   fi ;
   
   
@@ -52,12 +52,14 @@ if [ -e $query ] ; then
   else
   echo "$blast is empty"
   /softwares/ncbi-blast-2.10.1+/bin/blastn -db $blast_db -query $query -evalue 1e-20 -outfmt 6 -out $blast
-  # db = notre data bank, query = le fichier de notre gene a blaster, expect value threshold pour garder un  , outfmt 6 sortie au format tabulaire
+  # db = notre data bank, query = le fichier de notre gene a blaster 
+  # -evalue est la limite pour l expect value threshold c est a direla chance d'obtenir un alignement (match) par hasard dans une db de taille connue, plus cette valeure est basse, plus les sorties sont significatives
+  # outfmt 6 sortie au format tabulaire
   fi ;
   
 fi ;  
   
 
 
-
+# FIN
 
